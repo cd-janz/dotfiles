@@ -1,0 +1,6 @@
+[submodule "neovim"]
+	path = neovim
+	url = https://github.com/cd-janz/neovim.git
+[submodule "TWM/qtile"]
+	path = TWM/qtile
+	url = https://www.github.com/cd-janz/qtile
