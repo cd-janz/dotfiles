@@ -10,7 +10,21 @@ if [[ "$CURRENT_ST" == "x11" ]]; then
   fi
   if ! pgrep -x picom > /dev/null; then
     echo "Picom it's not running. Starting..."
-    picom -b
+    picom -b &
   fi
-  feh --bg-fill --randomize "$HOME/dotfiles/Pictures/Wallpapers/" &
+  if ! pacman -Q xwallpaper &> /dev/null; then
+    echo "XWallpaper ain't installed, installing..."
+    sudo pacman -S xwallpaper
+  fi
+  xwallpaper --stretch ~/dotfiles/Pictures/Wallpapers/japanese_landscape.jpeg &
+  if ! pacman -Q polybar &> /dev/null; then
+    echo "Polybar ain't installed, installing now..."
+    sudo pacman -S polybar
+  fi
+  if ! pgrep -x polybar > /dev/null; then
+    polybar &
+  else
+    pkill polybar
+    polybar &
+  fi
 fi
