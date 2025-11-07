@@ -1,0 +1,101 @@
+{
+  "$schema": "",
+  "logo": {
+    "type": "kitty",
+    "source": "~/dotfiles/Pictures/Icons/meme.jpeg",
+    "width": 45,
+    "padding": {
+      "left": 2,
+      "right": 2,
+      "top": 1
+    }
+  },
+  "display": {
+    "separator": "➜   "
+  },
+  "modules": [
+    "break",
+    {
+      "type": "title",
+      "format": "                            {6}{7}{8}",
+      "color": "#6f00ff"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "┌──────────────────────────────────────────────────────────────────────────────┐"
+    },
+    "break",
+    {
+      "key": "       OS           ",
+      "keyColor": "white",
+      "type": "os"
+    },
+    {
+      "key": "    󰌢   Machine      ",
+      "keyColor": "white",
+      "type": "host"
+    },
+    {
+      "key": "       Kernel       ",
+      "keyColor": "white",
+      "type": "kernel"
+    },
+    {
+      "key": "    󰅐   Uptime       ",
+      "keyColor": "white",
+      "type": "uptime"
+    },
+    {
+      "key": "       Packages     ",
+      "keyColor": "white",
+      "type": "packages"
+    },
+    {
+      "key": "       WM           ",
+      "keyColor": "white",
+      "type": "wm"
+    },
+    {
+      "key": "       Shell        ",
+      "keyColor": "white",
+      "type": "shell"
+    },
+    {
+      "key": "       Terminal     ",
+      "keyColor": "white",
+      "type": "terminal"
+    },
+    {
+      "key": "       Font         ",
+      "keyColor": "white",
+      "type": "terminalfont"
+    },
+    {
+      "key": "    󰻠   CPU          ",
+      "keyColor": "white",
+      "type": "cpu"
+    },
+    {
+      "key": "    󰍛   GPU          ",
+      "keyColor": "white",
+      "type": "gpu"
+    },
+    {
+      "key": "       Memory       ",
+      "keyColor": "white",
+      "type": "memory"
+    },
+    {
+      "key": "     Wifi         ",
+      "keyColor": "green",
+      "type": "wifi"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "└──────────────────────────────────────────────────────────────────────────────┘"
+    },
+    "break"
+  ]
+}

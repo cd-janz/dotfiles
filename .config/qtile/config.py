@@ -1,13 +1,21 @@
 import os
 
 import libqtile.resources
-from libqtile import bar, layout, qtile, widget
+from libqtile import layout, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from libqtile.hook import subscribe
+from os.path import expanduser
+from subprocess import run
 
 mod = "mod4"
 terminal = guess_terminal()
+
+@subscribe.startup_once
+def autostart():
+    SCRIPT = expanduser("~/dotfiles/.assets/scripts/autostart.sh")
+    _ = run([SCRIPT])
 
 keys = [
     # Switch between windows
@@ -91,7 +99,7 @@ for i in groups:
 
 layouts = [
     layout.Max(),
-    layout.Columns(border_focus_stack=["#00000000"], border_width=0),
+    layout.Columns(border_width=0, margin_on_single=None, margin=2 ),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
