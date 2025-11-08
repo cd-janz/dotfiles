@@ -16,7 +16,7 @@ if [[ "$CURRENT_ST" == "x11" ]]; then
     echo "XWallpaper ain't installed, installing..."
     sudo pacman -S xwallpaper
   fi
-  xwallpaper --stretch ~/dotfiles/Pictures/Wallpapers/japanese_landscape.jpeg &
+  xwallpaper --stretch ~/dotfiles/assets/pictures/wallpapers/japanese_landscape.jpeg &
   if ! pacman -Q polybar &> /dev/null; then
     echo "Polybar ain't installed, installing now..."
     sudo pacman -S polybar
