@@ -2,7 +2,7 @@
   "$schema": "",
   "logo": {
     "type": "kitty",
-    "source": "~/dotfiles/Pictures/Icons/meme.jpeg",
+    "source": "~/dotfiles/assets/pictures/icons/meme.jpeg",
     "width": 45,
     "padding": {
       "left": 2,

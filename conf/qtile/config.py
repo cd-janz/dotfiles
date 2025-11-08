@@ -14,7 +14,7 @@ terminal = guess_terminal()
 
 @subscribe.startup_once
 def autostart():
-    SCRIPT = expanduser("~/dotfiles/.assets/scripts/autostart.sh")
+    SCRIPT = expanduser("~/dotfiles/scripts/autostart.sh")
     _ = run([SCRIPT])
 
 keys = [
