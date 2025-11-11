@@ -22,7 +22,8 @@ if [[ "$CURRENT_ST" == "x11" ]]; then
     sudo pacman -S polybar
   fi
   if ! pgrep -x polybar > /dev/null; then
-    polybar &
+    echo "polybar disabled"
+    # polybar &
   else
     pkill polybar
     polybar &
