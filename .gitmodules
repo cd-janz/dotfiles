@@ -1,3 +1,3 @@
-[submodule "/home/janz/dotfiles/conf/nvim"]
-	path = /home/janz/dotfiles/conf/nvim
-	url = https://www.github.com/cd-janz/neovim.git
+[submodule "conf/nvim"]
+	path = conf/nvim
+	url = https://github.com/cd-janz/neovim.git
