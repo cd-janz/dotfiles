@@ -2,10 +2,18 @@
   all: unset; //Unsets everything so you can style everything from scratch
 }
 
+
+
+$surface: #16092E;
+$focus: #E0BD6D;
+$text: #ff6666;
+$bg: rgba(61, 38, 103, 0.3);
+
 .bar {
   font-family: "IosevkaTerm Nerd Font", monospace;
-  background-color: transparent;
-  color: #000000;
+  background-color: $bg;
+  color: white;
+  padding: 2px 0;
 }
 
 .sidestuff slider {
@@ -19,6 +27,7 @@
   color: #000000;
   border-radius: 10px;
 }
+
 .metric scale trough {
   all: unset;
   background-color: #4e4e4e;
@@ -28,12 +37,14 @@
   margin-left: 10px;
   margin-right: 20px;
 }
+
 .metric scale trough highlight {
   all: unset;
   background-color: #D35D6E;
   color: #000000;
   border-radius: 10px;
 }
+
 .metric scale trough {
   all: unset;
   background-color: #4e4e4e;
@@ -43,19 +54,32 @@
   margin-left: 10px;
   margin-right: 20px;
 }
+
 .label-ram {
   font-size: large;
 }
-.workspaces{
-  background-color: #ffd5cd;
+
+.workspaces {
+  background-color: $surface;
+  color: $text;
   padding: 0 15px;
   border-radius: 15px;
 }
-.workspaces button{
-  padding: 0 10px;
+
+.workspaces label {
+  padding: 0 5px;
+  font-size: 1.125rem;
 }
+
+.workspaces .active {
+  color: #bfbfbf;
+}
+
+.workspaces .focused {
+  color: $focus;
+}
+
 .workspaces button:hover {
   background-color: white;
   color: #D35D6E;
 }
-

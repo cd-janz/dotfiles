@@ -1,4 +1,4 @@
-(deflisten wspaces "./scripts/workspaces.sh -w 4")
+(deflisten wspaces "$HOME/dotfiles/scripts/eww/ws.py -w 4")
 
 (defwidget bar []
   (centerbox :orientation "h"
@@ -27,7 +27,8 @@
        :spacing 10
     (for ws in wspaces
       (eventbox :cursor "pointer" :onclick "wmctrl -s ${ws.id}"
-        (label :text (to-string (:workspace ws)))
+        :class "${ws.focused ? "focused" : (ws.active ? "active" : "")}"
+        (label :text "${ws.label}")
       )
     )
   )
@@ -66,8 +67,8 @@
   :windowtype "dock"
   :geometry (geometry :x "0%"
                       :y "0%"
-                      :width "98%"
-                      :height "42px"
+                      :width "100%"
+                      :height "36px"
                       :anchor "top center")
-  :reserve (struts :side "top" :distance "42px")
+  :reserve (struts :side "top" :distance "38px")
   (bar))
