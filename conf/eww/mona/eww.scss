@@ -4,16 +4,17 @@
 
 
 
-$surface: #16092E;
-$focus: #E0BD6D;
-$text: #ff6666;
-$bg: rgba(61, 38, 103, 0.3);
+$surface: #414559;
+$focus: #e5c890;
+$text: #c6d0f5;
+$red: #e78284;
+$bg: rgba(48, 52, 70, 0.5);
 
 .bar {
   font-family: "IosevkaTerm Nerd Font", monospace;
   background-color: $bg;
   color: white;
-  padding: 2px 0;
+  padding: 3px 0 4px 0;
 }
 
 .sidestuff slider {
@@ -61,9 +62,9 @@ $bg: rgba(61, 38, 103, 0.3);
 
 .workspaces {
   background-color: $surface;
-  color: $text;
+  color: $red;
   padding: 0 15px;
-  border-radius: 15px;
+  border-radius: 18px;
 }
 
 .workspaces label {
@@ -72,7 +73,7 @@ $bg: rgba(61, 38, 103, 0.3);
 }
 
 .workspaces .active {
-  color: #bfbfbf;
+  color: $text;
 }
 
 .workspaces .focused {

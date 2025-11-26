@@ -30,10 +30,10 @@ def get_workspaces(focus: int):
     mandatory: int = int(argv[2])
     result = []
     for i in range(1, int(num_ws)+1):
-        if len(ws_active) -1 >= mandatory and not str(i-1) in ws_active and i-1 != focus:
-            continue
-        elif not str(i-1) in ws_active and i-1 != focus and i > mandatory:
-            continue
+        # if len(ws_active) -1 >= mandatory and not str(i-1) in ws_active and i-1 != focus:
+        #     continue
+        # elif not str(i-1) in ws_active and i-1 != focus and i > mandatory:
+        #     continue
         active = str(i-1) in ws_active
         focused = i-1 == focus
         print(f"workspace: {i};isActive: {active}; isFocused: {focused}")

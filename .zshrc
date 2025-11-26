@@ -118,3 +118,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # dotnet
 export DOTNET_ROOT=$(pwd)/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
