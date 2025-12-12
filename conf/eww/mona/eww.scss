@@ -1,75 +1,45 @@
 * {
   all: unset; //Unsets everything so you can style everything from scratch
+  font-size: 1.125rem;
 }
-
-
 
 $surface: #414559;
 $focus: #e5c890;
 $text: #c6d0f5;
 $red: #e78284;
 $bg: rgba(48, 52, 70, 0.5);
+$border: 15px;
 
-.bar {
+.container {
   font-family: "IosevkaTerm Nerd Font", monospace;
   background-color: $bg;
   color: white;
-  padding: 3px 0 4px 0;
+  padding: 3px 10px 4px 10px;
 }
 
-.sidestuff slider {
-  all: unset;
-  color: #ffd5cd;
+.surface {
+  background-color: $surface;
+  padding: 0 15px;
+  border-radius: $border;
 }
 
-.metric scale trough highlight {
-  all: unset;
-  background-color: #D35D6E;
-  color: #000000;
-  border-radius: 10px;
+.item{
+  padding-right: 15px;
 }
 
-.metric scale trough {
-  all: unset;
-  background-color: #4e4e4e;
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 50px;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-
-.metric scale trough highlight {
-  all: unset;
-  background-color: #D35D6E;
-  color: #000000;
-  border-radius: 10px;
-}
-
-.metric scale trough {
-  all: unset;
-  background-color: #4e4e4e;
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 50px;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-
-.label-ram {
-  font-size: large;
+.launcher-box{
+  border-radius: 20px;
 }
 
 .workspaces {
   background-color: $surface;
   color: $red;
-  padding: 0 15px;
-  border-radius: 18px;
+  padding: 0 10px;
+  border-radius: $border;
 }
 
 .workspaces label {
   padding: 0 5px;
-  font-size: 1.125rem;
 }
 
 .workspaces .active {

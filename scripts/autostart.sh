@@ -6,7 +6,7 @@ if [[ "$CURRENT_ST" == "x11" ]]; then
   CURRENT_RES=$(echo "$CURRENT_RES_RAW" | tr -d ',')
   if [[ "$CURRENT_RES" != "1920x1080" ]]; then
     echo "Current res ($CURRENT_RES) it's not 1920x1080. Fixing..."
-    xrandr --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-1 --off &
+    xrandr --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-2 --off &
   fi
   if ! pgrep -x picom > /dev/null; then
     echo "Picom it's not running. Starting..."

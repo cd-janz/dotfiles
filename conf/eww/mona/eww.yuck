@@ -1,30 +1,94 @@
-(deflisten wspaces "$HOME/dotfiles/scripts/eww/ws.py -w 4")
+(deflisten wspaces "$HOME/dotfiles/scripts/eww/ws.py")
+(defpoll time :interval "10s" "date '+%H:%M - %d %b %Y'")
+(defpoll ram :interval "2s" "$HOME/dotfiles/scripts/eww/system.py -ram")
+(defpoll disk :interval "30s" "$HOME/dotfiles/scripts/eww/system.py -disk")
+(defpoll cpu :interval "500ms" "$HOME/dotfiles/scripts/eww/system.py -cpu")
 
 (defwidget bar []
-  (centerbox :orientation "h"
-    (music)
+  (centerbox :class "container" :space-evenly true :spacing 10 :orientation "h"
+    (left)
+    (center)
+    (right)
+  )
+)
+(defwidget left []
+  (box :class "side" :orientation "h" :space-evenly false :halign "start" :spacing 10
+    (launcher)
     (workspaces)
-    (sidestuff)))
+  )
+)
 
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (metric :label "🔊"
-            :value volume
-            :onchange "amixer -D pulse sset Master {}%")
-    (metric :label ""
-            :value {EWW_RAM.used_mem_perc}
-            :onchange "")
-    (metric :label "💾"
-            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-            :onchange "")
-    time))
+(defwidget center []
+  (box :class "side" :orientation "h" :space-evenly false :halign "center" :spacing 10)
+)
+
+(defwidget right []
+  (box :class "side" :orientation "h" :space-evenly false :halign "end" :spacing 10
+    (resources)
+    (time)
+    (power)
+  )
+)
+
+(defwidget resources []
+  (eventbox :class "surface" :cursor "pointer"
+    (box
+      (disk)
+      (ram)
+      (cpu)
+    )
+  )
+)
+
+(defwidget disk []
+  (box :spacing 2 :orientation "h" :class "item"
+    (image :path "/home/janz/dotfiles/assets/svg/disk.svg" :image-width 20 :image-height 20 :fill-svg "#FFFFFF")
+    (label :text "${disk}")
+  )
+)
+
+(defwidget ram []
+  (box :spacing 2 :orientation "h" :class "item"
+    (image :path "/home/janz/dotfiles/assets/svg/ram.svg" :image-width 20 :image-height 20 :fill-svg "#FFFFFF")
+    (label :text "${ram}")
+  )
+)
+
+(defwidget cpu []
+  (box :spacing 2 :orientation "h" :class "item"
+    (image :path "/home/janz/dotfiles/assets/svg/ram.svg" :image-width 20 :image-height 20 :fill-svg "#FFFFFF")
+    (label :text "${cpu}")
+  )
+)
+
+(defwidget launcher []
+    (eventbox :class "surface" :cursor "pointer" :onclick "rofi -show drun" :width 32
+      (label :text " " :justify "center")
+    )
+)
+
+(defwidget time []
+  (box :class "surface"
+       :orientation "h"
+       :halign "center"
+    (label :text "${time}")
+  )
+)
+(defwidget power []
+  (eventbox :class "surface" :cursor "pointer"
+       :orientation "h"
+       :halign "center"
+       :width 32
+     (label :text " ")
+  )
+)
 
 (defwidget workspaces []
   (box :class "workspaces"
        :orientation "h"
-       :space-evenly true
+       :space-evenly false
        :halign "center"
-       :spacing 10
+       :spacing 4
     (for ws in wspaces
       (eventbox :cursor "pointer" :onclick "wmctrl -s ${ws.id}"
         :class "${ws.focused ? "focused" : (ws.active ? "active" : "")}"
@@ -33,34 +97,6 @@
     )
   )
 )
-(defwidget music []
-  (box :class "music"
-       :orientation "h"
-       :space-evenly false
-       :halign "start"
-    {music != "" ? "🎵${music}" : ""}))
-
-
-(defwidget metric [label value onchange]
-  (box :orientation "h"
-       :class "metric"
-       :space-evenly false
-    (box :class "label" label)
-    (scale :min 0
-           :max 101
-           :active {onchange != ""}
-           :onchange onchange)))
-
-
-
-(deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
-
-(defpoll volume :interval "1s"
-  "scripts/getvol")
-
-(defpoll time :interval "10s"
-  "date '+%H:%M %b %d, %Y'")
 
 (defwindow bar
   :monitor 0
@@ -70,5 +106,5 @@
                       :width "100%"
                       :height "36px"
                       :anchor "top center")
-  :reserve (struts :side "top" :distance "38px")
+  :reserve (struts :side "top" :distance "37px")
   (bar))

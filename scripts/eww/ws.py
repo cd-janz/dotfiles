@@ -1,48 +1,28 @@
 #!/usr/bin/env python3
 import json
 import subprocess
-from sys import argv, exit
-from os import path
+from sys import exit
 
-if len(argv) > 3:
-    print("[]")
-    exit(1)
-
-if argv[1] != "-w" and not isinstance(argv[2], (int)):
-    print("[]")
-    exit(1)
-
-
-def get_image_path(active: bool, focused: bool = False):
-    if focused:
-        return "󰮯"
-    elif active:
-        return "󰊠"
-    else:
-        return ""
-
+def get_label(index: int) -> str:
+    if 0 < index > 9:
+        exit()
+    _LABELS: list[str] = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X']
+    return _LABELS[index]
 
 def get_workspaces(focus: int):
     ws_query = subprocess.run("wmctrl -d | wc -l", shell=True, capture_output=True, check=True, text=True)
     num_ws = ws_query.stdout.strip()
     ws_active_query = subprocess.run("wmctrl -l | awk '{print $2}' | sort -u", shell=True, capture_output=True, check=True, text=True)
     ws_active = ws_active_query.stdout.split("\n")
-    mandatory: int = int(argv[2])
     result = []
     for i in range(1, int(num_ws)+1):
-        # if len(ws_active) -1 >= mandatory and not str(i-1) in ws_active and i-1 != focus:
-        #     continue
-        # elif not str(i-1) in ws_active and i-1 != focus and i > mandatory:
-        #     continue
         active = str(i-1) in ws_active
         focused = i-1 == focus
-        print(f"workspace: {i};isActive: {active}; isFocused: {focused}")
-        result.append({
-            "id": i - 1, "workspaces": i, "label": get_image_path(active, focused), "active": active,
-            "mandatory": i <= mandatory, "focused": focused
-            })
+        if not active and not focused:
+            continue
+        index = i-1
+        result.append({"id": index, "workspaces": i, "label": get_label(index) , "active": active, "focused": focused})
     return result
-
 
 def listen_changes():
     process = subprocess.Popen(
